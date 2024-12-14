@@ -1,7 +1,9 @@
 
 const express = require('express')
+const cors = require('cors')
 const app = express()
 app.use(express.json())
+app.use(cors())
 const port = 9000
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/ecommercedb');
@@ -35,8 +37,16 @@ app.get('/users', (req, res) => {
 })
 
 app.post('/register', (req, res) => {
+
   User.create(req.body)
+  res.send('User created successfully')
 })
+
+app.post('/login', (req, res) => {
+
+
+})
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
