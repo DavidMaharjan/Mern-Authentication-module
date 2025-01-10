@@ -8,6 +8,9 @@ import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
+
+
 
 const validationSchema = Yup.object({
   user_name: Yup.string().required('Username is required').trim(),
@@ -31,6 +34,8 @@ const handleRegister=(values) => {
   axios.post('http://localhost:9000/register',values)
 }
 export default function RegisterPage() {
+  const router = useRouter();
+
   const formik = useFormik({
     initialValues: {
       user_name: '',
@@ -60,7 +65,7 @@ export default function RegisterPage() {
       className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Join FAsion
+          Join Fashion
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           Create your account and start shopping in style
@@ -242,7 +247,18 @@ export default function RegisterPage() {
             </div>
 
             <Button type="submit" className="w-full">Create Account</Button>
+        
+
+            
           </form>
+          <div className="mt-6">
+            <Button
+              variant="outline"
+              className="w-full"
+              onClick={() => router.push('/login')}>
+              Login
+            </Button>
+          </div>
         </div>
       </div>
     </div>)
