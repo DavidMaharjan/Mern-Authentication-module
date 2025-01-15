@@ -87,6 +87,7 @@ app.post('/register', async(req, res) => {
 
   User.create(req.body)
   res.send('User created successfully')
+  
 })
 
 //login of Users

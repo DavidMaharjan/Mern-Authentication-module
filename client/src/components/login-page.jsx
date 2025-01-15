@@ -76,7 +76,11 @@ export default function LoginPage() {
               ) : null}
             </div>
 
-            <Button type="submit" className="w-full">Sign In</Button>
+            <Button type="submit" className="w-full"
+              onClick={()=> router.push('/home')}
+            >
+              
+              Sign In</Button>
           </form>
           
           <div className="mt-6">
